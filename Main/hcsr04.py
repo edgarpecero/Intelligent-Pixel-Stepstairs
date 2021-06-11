@@ -18,7 +18,7 @@ class HCSR04:
         self.echo_timeout_us = echo_timeout_us
         # Init trigger pin (out)  #13 esp32
         self.trigger = Pin(23, mode=Pin.OUT, pull=None)
-        self.trigger.value(0)
+        self.trigger.value(0)   
 
         # Init echo pin (in)
         self.echo = Pin(echo_pin, mode=Pin.IN, pull=None)
