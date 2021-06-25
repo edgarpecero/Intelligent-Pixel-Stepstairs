@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+<head>
+    <title>Lümina Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/space-ranger" rel="stylesheet">
+</head>
+
+<style>
+
+body{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-family: 'Space Ranger 3D', sans-serif;
+    /* font-family: 'Space Ranger Bold', sans-serif; */
+    /* font-family: 'Space Ranger', sans-serif; */
+
+    letter-spacing: 2px;
+}
+h1{
+    font-size: 60px;
+}
+h2{
+    font-size: 30px;
+}
+select{
+    font-family: 'Space Ranger', sans-serif;
+    color: white;
+}
+input{
+    font-family: 'Space Ranger', sans-serif;
+
+}
+
+.container-h1{
+    display: block;
+    font-family: 'Space Ranger', sans-serif;
+    width: 75%;
+    margin-bottom: 0px;
+    margin: auto;
+    letter-spacing: 1px;
+    left: 50%;
+    text-align: center;
+    background: red;
+    background: -webkit-linear-gradient(left, red , yellow, green, cyan, blue, violet);
+    background: -o-linear-gradient(right, red yellow, green, cyan, blue, violet);
+    background: -moz-linear-gradient(right, red, yellow, green, cyan, blue, violet);
+    background: linear-gradient(to right, red , yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container-h2{
+    font-family: 'Space Ranger', sans-serif;
+    left: 50%;
+    margin: auto;
+    margin-top: -1rem;
+    letter-spacing: 1px;
+    width: 215px;
+    text-align: center;
+    background: red;
+    background: -webkit-linear-gradient(left, red , yellow, green, cyan, blue, violet);
+    background: -o-linear-gradient(right, red yellow, green, cyan, blue, violet);
+    background: -moz-linear-gradient(right, red, yellow, green, cyan, blue, violet);
+    background: linear-gradient(to right, red , yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+.container-programs{
+    padding-top: 50px;
+    text-align: center;  
+    padding-bottom: 10px;
+}
+.container-update{
+    text-align: center;  
+    padding-top: 30px;
+}
+</style>
+
+
+
+<body>
+    <div class="container">
+        <div class="container-headliner">
+            <div>
+
+            </div>
+            <div class="container-h1">
+                <h1>escaleras inteligentes</h1>
+            </div>
+            <div class="container-h2">
+                <h2>Lümina Leds</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <form>
+                    <div class="container-programs">
+                        <input type="radio" class="btn-check" name="options" id="sensor" autocomplete="off" checked>
+                        <label class="btn btn-lg btn-success" for="sensor">Sensores</label>
+                        <input type="radio" class="btn-check" name="options" id="effect" autocomplete="off">
+                        <label class="btn btn-lg btn-success" for="effect">efectos</label>
+                        <p> </p>
+                        <!-- <div class="form-group">               // Get BoardUrl and Password to access to WebRepl
+                        <label for="boardURL">Board URL</label>
+                        <input type="text" class="form-control" id="boardURL" value="ws://192.168.1.101:8266">
+                        </div>
+                        <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div> -->
+                    </div>
+                    <div class="form-group" id="div_s_animation">
+                        <p> </p>
+                        <label for="s_animation">Animaci&oacuten</label>
+                        <select class="form-control" id="s_animation">
+                            <option value="0">Escal&oacuten x escal&oacuten</option>
+                            <option value="1">Llenado</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="div_e_animation">
+                        <p> </p>
+                        <label for="e_animation">Animaci&oacuten</label>
+                        <select class="form-control" id="e_animation">
+                            <option value="chase">Perseguir</option>
+                            <option value="smooth">Respiración</option>
+                            <option value="jump">Saltos</option>
+                            <option value="solid">S&oacutelido</option>
+                            <option value="off">Apagado</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="div_e_period_ms">
+                        <label for="e_period_ms">Velocidad (1000 = 1 seg)</label>
+                        <input type="text" class="form-control" id="e_period_ms" value="250">
+                    </div>
+                    <!--<div class="form-group">
+                        <label for="solidcolors">Colores S&oacutelidos</label>
+                        <select class="form-control" id="solidcolors">
+                        </select>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="colors">Colores</label>
+                        <select class="form-control" id="colors">
+                        </select>
+                    </div>
+                    <div class="form-group" id="div_s_delay_step">
+                        <label for="s_delay_step">Retardo Escalón (1000 = 1 seg)</label>
+                        <input type="text" class="form-control" id="s_delay_step" value="3000">
+                    </div>
+                    <div class="checkbox" id="div_e_mirror_colors">
+                        <label>
+                            <input type="checkbox" id="e_mirror_colors">efecto espejo
+                        </label>
+                    </div>
+                    <div class="container-update">
+                        <button class="btn btn-lg btn-primary" type="button" id="update">Actualizar</button>
+                        <p></p>
+                        <button type="button" class="btn btn-lg btn-danger" id="reset">Reset Programa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<script>
+    $(document).ready(function(){
+        $('#div_e_animation').hide();
+        $('#div_e_period_ms').hide();
+        $('#div_e_mirror_colors').hide();
+        $('#div_s_animation').hide();
+
+        
+        var colors = [
+            { name: 'Blanco',        value: [[200,200,200], [0,0,0]] },
+            { name: 'Amarillo',      value: [[255,165,0], [0,0,0]] },
+            { name: 'Azul',          value: [[0,0,255], [0,0,0]] },
+            { name: 'Cyan',          value: [[0,255,255], [0,0,0]] },
+            { name: 'Naranja',       value: [[255,127,0], [0,0,0]] },
+            { name: 'Oliva',         value: [[128,128,0], [0,0,0]] },
+            { name: 'Rojo',          value: [[255,0,0], [0,0,0]] },
+            { name: 'Verde',         value: [[0,255,0], [0,0,0]] },
+            { name: 'Violeta',       value: [[255,0,255], [0,0,0]] },
+
+            { name: 'Mexico',        value: [[200,200,200], [255,0,0], [0,255,0]] },
+            { name: 'Azul - Rojo',   value: [[0,0,255], [16,0,128], [32,0,64], [64,0,32], [128,0,16], [255,0,0]] },
+            { name: 'Rojo - Verde',  value: [[255,0,0], [128,16,0], [64,32,0], [32,64,0], [16,128,0], [0,255,0]] },
+            { name: 'Azul - Blanco', value: [[0,0,255], [16,16,255], [32,32,255], [64,64,255], [128,128,255], [255,255,255]] }
+        ];
+        colors.forEach(function(color, i){
+            $('#colors').append($('<option></option>').attr('value', i).text(color.name));
+        });
+        
+        $('#sensor').click(function(){
+            $('#div_e_animation').hide();
+            $('#div_e_period_ms').hide();
+            $('#div_e_mirror_colors').hide();
+            $('#div_s_delay_step').show();
+
+        });
+        $('#effect').click(function(){
+            $('#div_e_animation').show();
+            $('#div_e_period_ms').show();
+            $('#div_e_mirror_colors').show();
+            $('#div_s_delay_step').hide();
+
+        });
+
+
+        $('#update').click(function(){
+            console.log('Update clicked Sensors!');
+            //Static configuration
+            var boardURL = $('#boardURL').val();
+            var password = $('#password').val();
+
+            var config = {
+                colors: colors[$('#colors').val()].value,
+                e_animation: $('#e_animation').val(),
+                e_period_ms: Number($('#e_period_ms').val()),
+                e_mirror_colors: $('#e_mirror_colors').prop('checked'),
+                mode_lights: $('#effect').prop('checked') ? 1 : 0 ,
+                mode_sensors: $('#sensor').prop('checked') ? 1 : 0 ,
+                s_animation: 0,
+                // s_animation: Number($('#s_animation').val()),
+                s_delay_step: Number($('#s_delay_step').val()),
+                s_sensor_on: $('#sensor').prop('checked') ? 1 : 0
+            };
+            console.log(config)
+            // Open an initialize web socker connection
+            ws = new WebSocket('ws://192.168.1.101:8266');
+            ws.onopen = function() {
+                // Uncomment to see debug output
+                ws.send('1212\r\n');
+                // Ctrl C to break out of any running loop.
+                ws.send('\x03');
+                // Conver configuration to JSON formatted data.
+                console.log(config)
+                var configJSON = JSON.stringify(config);
+                var configUnit8Data = new Uint8Array(configJSON.length)
+                for (var i = 0; i < configJSON.length; ++i){
+                    configUnit8Data[i] = configJSON.charCodeAt(i);
+                }
+                // Create a put file request to save a new config.json file on the board
+                var dest_fname = 'config.json';
+                var dest_fsize = configUnit8Data.length;
+                var rec = new Uint8Array(2 + 1 + 1 + 8 + 4 + 2 + 64);
+                rec[0] = 'W'.charCodeAt(0);
+                rec[1] = 'A'.charCodeAt(0);
+                rec[2] = 1; // put
+                rec[3] = 0;
+                rec[4] = 0; rec[5] = 0; rec[6] = 0; rec[7] = 0; rec[8] = 0; rec[9] = 0; rec[10] = 0; rec[11] = 0;
+                rec[12] = dest_fsize & 0xff; rec[13] = (dest_fsize >> 8) & 0xff; rec[14] = (dest_fsize >> 16) & 0xff; rec[15] = (dest_fsize >> 24) & 0xff;
+                rec[16] = dest_fname.length & 0xff; rec[17] = (dest_fname.length >> 8) & 0xff;
+                for (var i = 0; i < 64; ++i) {
+                    if (i < dest_fname.length) {
+                        rec[18 + i] = dest_fname.charCodeAt(i);
+                    } else {
+                        rec[18 + i] = 0;
+                    }
+                }
+                ws.send(rec);
+                ws.send(configUnit8Data);
+                console.log('sent the data!');
+                // ws.send('import machine\r\nmachine.reset()\r\n');
+                
+                ws.send('\x04');
+            };//$update.funcion.open
+        });//$update.funcion
+
+
+        $('#reset').click(function(){
+            $("divmirror").hide(); 
+            console.log('Reseting...');
+            var config = {
+                colors: [[165,165,165], [0,0,0]],
+                e_animation: $('#e_animation').val(),
+                e_period_ms: Number($('#e_period_ms').val()),
+                e_mirror_colors: $('#e_mirror_colors').prop('checked'),
+                mode_lights: 0,
+                mode_sensors: 1,
+                s_animation: 0,
+                // s_animation: Number($('#s_animation').val()),
+                s_delay_step: 3000,
+                s_sensor_on: 0
+            };
+            console.log(config)
+            ws = new WebSocket('ws://192.168.1.101:8266');
+            ws.onopen = function() {
+                ws.send('1212\r\n');
+                ws.send('\x03');
+                var configJSON = JSON.stringify(config);
+                var configUnit8Data = new Uint8Array(configJSON.length)
+                for (var i = 0; i < configJSON.length; ++i){
+                    configUnit8Data[i] = configJSON.charCodeAt(i);
+                }
+                var dest_fname = 'config.json';
+                var dest_fsize = configUnit8Data.length;
+                var rec = new Uint8Array(2 + 1 + 1 + 8 + 4 + 2 + 64);
+                rec[0] = 'W'.charCodeAt(0);
+                rec[1] = 'A'.charCodeAt(0);
+                rec[2] = 1; // put
+                rec[3] = 0;
+                rec[4] = 0; rec[5] = 0; rec[6] = 0; rec[7] = 0; rec[8] = 0; rec[9] = 0; rec[10] = 0; rec[11] = 0;
+                rec[12] = dest_fsize & 0xff; rec[13] = (dest_fsize >> 8) & 0xff; rec[14] = (dest_fsize >> 16) & 0xff; rec[15] = (dest_fsize >> 24) & 0xff;
+                rec[16] = dest_fname.length & 0xff; rec[17] = (dest_fname.length >> 8) & 0xff;
+                for (var i = 0; i < 64; ++i) {
+                    if (i < dest_fname.length) {
+                        rec[18 + i] = dest_fname.charCodeAt(i);
+                    } else {
+                        rec[18 + i] = 0;
+                    }
+                }
+                ws.send(rec);
+                ws.send(configUnit8Data);
+                console.log('Sent Data!');
+                ws.send('import machine\r\nmachine.reset()\r\n');
+                };//$reset.function.open
+                //location.reload();
+            })//$reset.function
+    });//$document
+
+</script>
+
+</html>
