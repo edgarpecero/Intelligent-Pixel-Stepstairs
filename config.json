@@ -1,0 +1,12 @@
+{
+    "colors": [[200,200,200], [0,0,0]],
+    "e_animation": "chase",
+    "e_mirror_colors": true,
+    "e_period_ms": 100,
+    "mode_sensors": 0,
+    "mode_lights": 1,
+    "s_animation": 0,
+    "s_delay_step": 2500,
+    "s_sensor_on": 0
+}
+
