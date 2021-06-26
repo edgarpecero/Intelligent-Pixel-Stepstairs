@@ -1,34 +1,21 @@
-try:
-  import usocket as socket
-except:
-  import socket
-from machine import Pin
-from time import time
-import network
+import webrepl
 
-import esp
-esp.osdebug(None)
-import gc
-gc.collect()
+# Define a do_connect to initialize WiFi Conection using static IP Adress
+def do_connect(ssid, pwd):
+    import network
+    sta_if = network.WLAN(network.STA_IF)
+    if not sta_if.isconnected():
+        print('connecting to network...')
+        sta_if.active(True)
+        #static IP adress for the Board
+        sta_if.ifconfig(('192.168.1.101','255.255.255.0','192.168.1.254','192.168.1.254'))
+        sta_if.connect(ssid, pwd)
+        while not sta_if.isconnected():
+            pass
+    print('network config:', sta_if.ifconfig())
 
-#ssid = 'INFINITUM7bsj'
-ssid = 'INFINITUM259F_2.4'
+do_connect('INFINITUM7bsj', 'd061436793')
 
-#password = 'd061436793'
-password = 's3My8K5sG2'
+# Starts WebREPL
+webrepl.start()
 
-
-
-station = network.WLAN(network.STA_IF)
-wstime = time
-station.active(True)
-station.connect(ssid, password)
-
-while station.isconnected() == False:
-    pass
-
-print('Connection successful')
-print(station.ifconfig())
-
-led32 = Pin(32, Pin.OUT)
-led33 = Pin(33, Pin.OUT)

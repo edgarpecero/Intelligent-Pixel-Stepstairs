@@ -7,8 +7,8 @@ class HCSR04:
     The sensor range is between 2cm and 4m.
     The timeouts received listening to echo pin are converted to OSError('Out of range')
     """
-    # echo_timeout_us is based in chip range limit (400cm)
-    def __init__(self, trigger_pin, echo_pin, echo_timeout_us=1000000):
+    # echo_timeout_us is based in chip range limit (200cm)
+    def __init__(self, trigger_pin, echo_pin, echo_timeout_us=500*2*20):
         """
         trigger_pin: Output pin to send pulses
         echo_pin: Readonly pin to measure the distance. The pin should be protected with 1k resistor
@@ -19,7 +19,7 @@ class HCSR04:
         # Init trigger pin (out)
         self.trigger = Pin(trigger_pin, mode=Pin.OUT, pull=None)
         self.trigger.value(0)
-
+ 
         # Init echo pin (in)
         self.echo = Pin(echo_pin, mode=Pin.IN, pull=None)
 
@@ -29,10 +29,9 @@ class HCSR04:
         We use the method `machine.time_pulse_us()` to get the microseconds until the echo is received.
         """
         self.trigger.value(0) # Stabilize the sensor
-        time.sleep_us(5)
+        time.sleep_us(100) # 3450*8
         self.trigger.value(1)
-        # Send a 10us pulse.
-        time.sleep_us(10)
+        time.sleep_us(3500*9) 
         self.trigger.value(0)
         try:
             pulse_time = machine.time_pulse_us(self.echo, 1, self.echo_timeout_us)
@@ -53,7 +52,7 @@ class HCSR04:
         # the sound speed on air (343.2 m/s), that It's equivalent to
         # 0.34320 mm/us that is 1mm each 2.91us
         # pulse_time // 2 // 2.91 -> pulse_time // 5.82 -> pulse_time * 100 // 582 
-        mm = pulse_time * 100 // 582
+        mm = int(pulse_time * 100 // 582)
         return mm
 
     def distance_cm(self):
@@ -67,5 +66,6 @@ class HCSR04:
         # (the pulse walk the distance twice) and by 29.1 becasue
         # the sound speed on air (343.2 m/s), that It's equivalent to
         # 0.034320 cm/us that is 1cm each 29.1us
-        cms = (pulse_time / 2) / 29.1
+        cms = int((pulse_time // 2) // 29.1)
         return cms
+    
