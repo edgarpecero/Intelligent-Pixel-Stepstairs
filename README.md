@@ -10,20 +10,20 @@ This is the Web Application Interface. The two green buttons select the 2 main c
   - Effects
 Then, new config options will be displayed.
 
-Sensors' Mode:
-  In the default config for Sensor Mode, the system will be active between 7 p. m. and 7 a. m. (UTC-6 - using ntpserver to get datetime), lights' color will be white and   a delay of 2 seconds. 
-  During the active time, lights will be turn on while something or someone stands on the steps.
-  
-  Other functions:
-    - Color Selection
-    - Delay for turn off the lights.
+- Sensors' Mode:
+    In the default config for Sensor Mode, the system will be active between 7 p. m. and 7 a. m. (UTC-6 - using ntpserver to get datetime), lights' color will be white    and   a delay of 2 seconds. 
+    During the active time, lights will be turn on while something or someone stands on the steps.
+
+    Other functions:
+      - Color Selection
+      - Delay for turn off the lights.
     
-Effects' Mode:
-  In the default config for Effect Mode, the system will remenber the last color selected. You can choose among colors, you can choose differents types of animation.
-  
-  Other functions:
-    - Speed (milliseconds)
-    - Mirroring colors
+- Effects' Mode:
+    In the default config for Effect Mode, the system will remenber the last color selected. You can choose among colors, you can choose differents types of animation.
+
+    Other functions:
+      - Speed (milliseconds)
+      - Mirroring colors
 
 ![efectos](https://user-images.githubusercontent.com/81655331/130261845-1ab0d5a7-99b7-46d9-95fe-bb26f4312e74.png)
 
