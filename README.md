@@ -53,7 +53,7 @@ You can choose among differents animations:
 
     - Turn Off
     
-And combinate the animations with 
+And combine animations with your prefered color.
 
 ![4](https://user-images.githubusercontent.com/81655331/130281744-0e61e070-c176-4d90-96b1-e5638dc148e7.jpg)
 ![5](https://user-images.githubusercontent.com/81655331/130281745-5605a936-736b-4d28-8b89-bb1efa696e00.jpg)
