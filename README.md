@@ -16,14 +16,18 @@ Then, new config options will be displayed.
     During the active time, lights will be turn on while something or someone stands on the steps.
 
     Other functions:
+    
       - Color Selection
+     
       - Delay for turn off the lights.
     
 - Effects' Mode:
     In the default config for Effect Mode, the system will remenber the last color selected. You can choose among colors, you can choose differents types of animation.
 
     Other functions:
+    
       - Speed (milliseconds)
+      
       - Mirroring colors
 
 ![efectos](https://user-images.githubusercontent.com/81655331/130261845-1ab0d5a7-99b7-46d9-95fe-bb26f4312e74.png)
