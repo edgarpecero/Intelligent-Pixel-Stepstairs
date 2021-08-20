@@ -8,6 +8,7 @@ The comunication between MCU and Web App, it will use the web REPL as an 'API' t
 This is the Web Application Interface. The two green buttons select the 2 main configuration for the systems
   - Sensors
   - Effects
+
 Then, new config options will be displayed.
 
 - Sensors' Mode:
