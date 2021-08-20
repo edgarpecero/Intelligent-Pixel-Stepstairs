@@ -19,7 +19,7 @@ Then, new config options will be displayed.
     
       - Color Selection
      
-      - Delay for turn off the lights.
+      - Delay for turn off the lights
     
 - Effects' Mode:
     In the default config for Effect Mode, the system will remenber the last color selected. You can choose among colors, you can choose differents types of animation.
@@ -36,17 +36,24 @@ Then, new config options will be displayed.
 
 Sensor Mode
 Lights will turn on when something or someone stands on the steps. The sensor HCSR04 will trigger the signal, which is read by the MCU and turn on the lights with the config load from the Web App.
-![1](https://user-images.githubusercontent.com/81655331/130281740-5c3c884e-f868-41bd-ae86-ec4da77b7260.jpg)
-![2](https://user-images.githubusercontent.com/81655331/130281741-290588df-f571-4d10-9692-8e57704cc0c3.jpg)
-![3](https://user-images.githubusercontent.com/81655331/130281742-b8ad3794-66b6-48b0-a9a1-7ba18dbedae7.jpg)
+
+![merge](https://user-images.githubusercontent.com/81655331/130284177-35e7d380-8596-4516-b313-64558709a7bc.png)
+
 
 Effects Mode
 You can choose among differents animations:
-  - Chase
-  - Jump
-  - Smooth
-  - Solid
-  - Turn Off
+  
+    - Chase
+
+    - Jump
+
+    - Smooth
+
+    - Solid
+
+    - Turn Off
+    
 And combinate the animations with 
+
 ![4](https://user-images.githubusercontent.com/81655331/130281744-0e61e070-c176-4d90-96b1-e5638dc148e7.jpg)
 ![5](https://user-images.githubusercontent.com/81655331/130281745-5605a936-736b-4d28-8b89-bb1efa696e00.jpg)
