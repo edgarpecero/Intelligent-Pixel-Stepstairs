@@ -1,9 +1,11 @@
 import machine
+from machine import Pin
 import utime
 import time
-import hcsr04
+# import hcsr04
 import neopixel 
 import ujson
+
 import ntptime
 
 
@@ -23,13 +25,19 @@ np = neopixel.NeoPixel(PIXEL_PIN, PIXEL_COUNT)
 np.fill((0,0,0))                                # Start the led
 np.write()                                      # strip off
 
+
+triggerSensor = Pin(25, Pin.OUT)
+sensor_0 = Pin(21, Pin.IN)
+sensor_1 = Pin(19, Pin.IN)
+sensor_2 = Pin(18, Pin.IN)
+sensor_3 = Pin(5, Pin.IN)
 # Sensor Pin config
-ultrasonic_0 = hcsr04.HCSR04(echo_pin=23, trigger_pin=25)
-ultrasonic_2 = hcsr04.HCSR04(echo_pin=21, trigger_pin=5)
-ultrasonic_4 = hcsr04.HCSR04(echo_pin=36, trigger_pin=19)
-ultrasonic_6 = hcsr04.HCSR04(echo_pin=16, trigger_pin=18)
+# ultrasonic_0 = hcsr04.HCSR04(echo_pin=23, trigger_pin=25)
+# ultrasonic_2 = hcsr04.HCSR04(echo_pin=21, trigger_pin=5)
+# ultrasonic_4 = hcsr04.HCSR04(echo_pin=36, trigger_pin=19)
+# ultrasonic_6 = hcsr04.HCSR04(echo_pin=16, trigger_pin=18)
 delayStep = int(config['s_delay_step']) #After 3000 ms, they will turn off
-distance_act = 69                       #sensor distance activation
+# distance_act = 10                       #sensor distance activation
 
 # var to run a function once.
 ro0 = 0
@@ -45,6 +53,8 @@ Time3 = []
 
 # var to save time data. 
 period = 0
+period2 = 0
+
 servertimeOn = 0
 
 """"""" Lighting Animation """""""
@@ -114,12 +124,20 @@ def set_color(a,z,aa,zz):
     for i in range(aa,zz):
         np[i] = colors[0] 
     np.write()
-    
+
 def blank(a,z,aa,zz):
     for i in range(a,z):
         np[i] = (0, 0, 0)
     for i in range(aa,zz):
         np[i] = (0, 0, 0) 
+    np.write()
+
+def filling(a,z,aa,zz):
+    colors = config['colors']
+    for i in range(a,z):
+        np[i] = colors[0]
+    for i in range(aa,zz):
+        np[i] = colors[0] 
     np.write()
 
 
@@ -155,7 +173,7 @@ while True:
             now = utime.ticks_ms()
             # Delay of 5000 ms to check current time.
             if now >= period + 5000:
-                period += 5000.
+                period += 5000
                 st = server_time()
                 if  ((st > 0) and (st < 39600)) or (st > 82800):    # Turn On 17:00 Mexico Time.
                     servertimeOn = 1
@@ -171,85 +189,69 @@ while True:
             # Different animation lighting for sensor will come soon...
             if sensorAnimation == 0:
 
-                # get the distance in cm for each sensor.
-                distance_0 = ultrasonic_0.distance_cm()
-                distance_2 = ultrasonic_2.distance_cm()
-                distance_4 = ultrasonic_4.distance_cm()
-                distance_6 = ultrasonic_6.distance_cm()
-                # print('Distance: ', distance_0, distance_2,distance_4,distance_6)
+
 
                 """ Grouping Sensors per step """
                 #sensor
                 if (sensorOn == 1 or servertimeOn == 1):
-
+                    # get the distance in cm for each sensor.
+                    # distance_0 = ultrasonic_0.distance_cm()
+                    # print('Distance: ', distance_0) #, distance_2,distance_4,distance_6)
                     # Compares if distance measured distance < distance_act
                     #----------- Step 0 Sensor(s)
-                    if (0 < distance_0 < distance_act):
-                        step_0 = 1
-                    else:
-                        step_0 = 0
-                    #----------- Step 1 Sensor(s)
-                    if (0 < distance_2 < distance_act):
-                        step_1 = 1
-                    else:
-                        step_1 = 0
-                    #----------- Step 2 Sensor(s)
-                    if (0 < distance_4 < distance_act):
-                        step_2 = 1
-                    else:
-                        step_2 = 0
-                    #----------- Step 3 Sensor(s)
-                    if (0 < distance_6 < distance_act):
-                        step_3 = 1
-                    else:
-                        step_3 = 0
+                                 
+                    triggerSensor.value(1)
 
-                    """ Steps Lighting Animation """
-                    # Step 0    
-                    # when someone is standing on a step, activates the turns the lights on
-                    # and starts adding values of time to Time0. When the sensors stop measuring. 
-                    # Compares Last Value [-1] of the list with Current time in millis (now)
-                    # and turn the lights off if have elapsed delayStep value.
-                    if step_0 == 1:                 # step_0 = 1 when distance_0 < distance_act
-                        Time0.append(now)           # starts storing millisecond in the array
-                        set_color(91,116,116,140)
-                        ro0 = 1
-                    elif step_0 == 0 and ro0 == 1:
-                        #run function once (ro0)
-                        if (now - Time0[-1]) > delayStep:
-                            blank(91,116,116,140) 
-                            Time0.clear()
-                            ro0 = 0 
-                    # Step 1
-                    if step_1 == 1: 
+                    if sensor_0.value() == 1 and sensor_3.value() == 1 :
+                        colors = config['colors']
+                        np.fill(colors[0])
+                        np.write()
+
+                    elif sensor_0.value() == 1 and sensor_3.value() == 0 :
                         Time1.append(now)
-                        set_color(61,91,140,170)
-                        ro1 = 1
-                    elif step_1 == 0 and ro1 == 1:
-                        if (now - Time1[-1]) > delayStep:
-                            blank(61,91,140,170)
-                            Time1.clear()
-                            ro1 = 0
-                    # Step 2     
-                    if step_2 == 1: 
-                        Time2.append(now)
-                        set_color(31,61,170,200)
-                        ro2 = 1
-                    elif step_2 == 0 and ro2 == 1:
-                        if (now - Time2[-1]) > delayStep:
-                            blank(31,61,170,200)
-                            Time2.clear()
-                            ro2 = 0
-                    # Step 3
-                    if step_3 == 1:  
-                        Time3.append(now)       #initialize a list of time
-                        set_color(0,31,200,231)
-                        ro3 = 1
-                    elif step_3 ==0 and ro3 == 1:
-                        if (now - Time3[-1]) > delayStep:   #3000 time in ms, compare the elapsed time since the last state,
-                            blank(0,31,200,231)
-                            Time3.clear()
-                            ro3 = 0
+                        if ro0 == 0:
+                            set_color(91,116,116,140)  #0
+                            time.sleep_ms(100)
+                            set_color(61,91,140,170) #1
+                            time.sleep_ms(100)
+                            set_color(31,61,170,200) #2
+                            time.sleep_ms(100)
+                            set_color(0,31,200,231) #3
+                            time.sleep_ms(2000)
+                            ro0 = 1
+                            print('abajo')
+
+                    elif sensor_0.value() == 0 and sensor_3.value() == 1 :
+                        Time1.append(now)
+                        if ro1 == 0:
+                            set_color(0,31,200,231) #3
+                            time.sleep_ms(100)
+                            set_color(31,61,170,200) #2
+                            time.sleep_ms(100)
+                            set_color(61,91,140,170) #1
+                            time.sleep_ms(100)
+                            set_color(91,116,116,140)  #0
+                            time.sleep_ms(2000)
+                            ro1 = 1
+                            print('arriba')
+                            
+                    elif sensor_0.value() == 0 and sensor_3.value() == 0 :
+                        print('espera')
+                        if ro1 == 1:
+                            if (now - Time1[-1]) > delayStep:                
+                                print('off')
+                                np.fill((0,0,0))
+                                np.write()
+                                ro1 = 0
+                                ro0 = 0
+                        if ro0 == 1:
+                            if (now - Time1[-1]) > delayStep:                
+                                print('off')
+                                np.fill((0,0,0))
+                                np.write()
+                                ro1 = 0
+                                ro0 = 0
+
                 else:
                     np.fill((0,0,0))
                     np.write()
@@ -264,4 +266,4 @@ while True:
             np.fill((0,0,0))
             np.write()
 
-    utime.sleep_ms(50)
+    utime.sleep_ms(100)

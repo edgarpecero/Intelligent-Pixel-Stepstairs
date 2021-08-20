@@ -29,9 +29,9 @@ class HCSR04:
         We use the method `machine.time_pulse_us()` to get the microseconds until the echo is received.
         """
         self.trigger.value(0) # Stabilize the sensor
-        time.sleep_us(100) # 3450*8
+        time.sleep_us(2) # 3450*8
         self.trigger.value(1)
-        time.sleep_us(3500*9) 
+        time.sleep_us(10) 
         self.trigger.value(0)
         try:
             pulse_time = machine.time_pulse_us(self.echo, 1, self.echo_timeout_us)
