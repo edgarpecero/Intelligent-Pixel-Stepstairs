@@ -6,81 +6,15 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <link href="http://fonts.cdnfonts.com/css/space-ranger" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
 </head>
-
-<style>
-body{
-    background-color: black;
-    color: white;
-    font-size: 20px;
-    font-family: 'Space Ranger 3D', sans-serif;
-    /* font-family: 'Space Ranger Bold', sans-serif; */
-    /* font-family: 'Space Ranger', sans-serif; */
-
-    letter-spacing: 2px;
-}
-h1{
-    font-size: 60px;
-}
-h2{
-    font-size: 30px;
-}
-select{
-    font-family: 'Space Ranger', sans-serif;
-    color: white;
-}
-input{
-    font-family: 'Space Ranger', sans-serif;
-
-}
-
-.container-h1{
-    display: block;
-    font-family: 'Space Ranger', sans-serif;
-    width: 75%;
-    margin-bottom: 0px;
-    margin: auto;
-    letter-spacing: 1px;
-    left: 50%;
-    text-align: center;
-    background: red;
-    background: -webkit-linear-gradient(left, red , yellow, green, cyan, blue, violet);
-    background: -o-linear-gradient(right, red yellow, green, cyan, blue, violet);
-    background: -moz-linear-gradient(right, red, yellow, green, cyan, blue, violet);
-    background: linear-gradient(to right, red , yellow, green, cyan, blue, violet);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.container-h2{
-    font-family: 'Space Ranger', sans-serif;
-    left: 50%;
-    margin: auto;
-    margin-top: -1rem;
-    letter-spacing: 1px;
-    width: 215px;
-    text-align: center;
-    background: red;
-    background: -webkit-linear-gradient(left, red , yellow, green, cyan, blue, violet);
-    background: -o-linear-gradient(right, red yellow, green, cyan, blue, violet);
-    background: -moz-linear-gradient(right, red, yellow, green, cyan, blue, violet);
-    background: linear-gradient(to right, red , yellow, green, cyan, blue, violet);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent
-}
-.container-programs{
-    padding-top: 50px;
-    text-align: center;  
-    padding-bottom: 10px;
-}
-.container-update{
-    text-align: center;  
-    padding-top: 30px;
-}
-</style>
-
 
 
 <body>
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+
     <div class="container">
         <div class="container-headliner">
             <div>
@@ -103,11 +37,13 @@ input{
                         <label class="btn btn-lg btn-success" for="effect">efectos</label>
                         <p> </p>
                     </div>
-                    <!-- <div class="form-group">               // Get BoardUrl and Password to access to WebRepl
-                        <label for="boardURL">Board URL</label>
-                        <input type="text" class="form-control" id="boardURL" value="ws://192.168.1.101:8266">
-                        </div>
-                        <div class="form-group">
+                    <div class="form-group">              <!--  // Get BoardUrl and Password to access to WebRepl -->
+                        <label for="boardURL1">Nombre del Sistema</label>
+                        <select class="form-control" id="boardURLID">
+                        </select>
+                        <!-- <input type="text" class="form-control" id="boardURL" value="ws://192.168.1.101:8266"> -->
+                    </div>
+                        <!-- <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" placeholder="Password">
                     </div> -->
@@ -140,8 +76,8 @@ input{
                         </select>
                     </div>
                     <div class="form-group" id="div_s_delay_step">
-                        <label for="s_delay_step">Retardo Escalón (1000 = 1 seg)</label>
-                        <input type="text" class="form-control" id="s_delay_step" value="3000">
+                        <label for="s_delay_step">Retardo Escalón (segundos)</label>
+                        <input type="text" class="form-control" id="s_delay_step" value="10">
                     </div>
                     <div class="checkbox" id="div_e_mirror_colors">
                         <label>
@@ -154,9 +90,19 @@ input{
                         <button type="button" class="btn btn-lg btn-danger" id="reset">Reset Programa</button>
                     </div>
                 </form>
+                <div class="social">
+                    <h4>Síguenos en: </h4>
+                    <a href="https://www.facebook.com/L%C3%BCmina-Leds-109159360992088"><i class="fa fa-facebook"></i> </a>
+                    <a href="https://www.instagram.com/lumina_leds/"><i class="fa fa-instagram"></i> </a>
+                    <!-- <a class="be" href="https://www.behance.net/edgarpecero"><i class="fab fa-behance-square"></i></a> -->
+                </div>
+                <p class="footer"><a href="https://luminaleds.mx">luminaleds.mx</a></p>
+
             </div>
+            
         </div>
     </div>
+    
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -165,7 +111,14 @@ input{
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<script>
+    let progress = document.getElementById('progressbar');
+    let totalHeight = document.body.scrollHeight - window.innerHeight;
+    window.onscroll = function(){
+        let progressHeight = (window.pageYOffset / totalHeight) * 250;
+        progress.style.height = progressHeight + "%";
+    }
+</script>
 
 <script>
     $(document).ready(function(){
@@ -177,27 +130,36 @@ input{
         $('#div_e_mirror_colors').hide();
         $('#div_s_animation').hide();
 
+        //Define list of boardURL(systems) the user can select to comunicate with
+        var boardURLID = [
+            { name: 'escalaras',            value: "ws://192.168.1.101:8266" },
+            { name: 'entrada Principal',    value: "ws://192.168.1.101:8266" }
+        ];
         //Define list of colors the user can select
         //solid colors or group of collors
         var colors = [
-            { name: 'Blanco',        value: [[200,200,200], [0,0,0]] },
-            { name: 'Amarillo',      value: [[255,165,0], [0,0,0]] },
-            { name: 'Azul',          value: [[0,0,255], [0,0,0]] },
-            { name: 'Cyan',          value: [[0,255,255], [0,0,0]] },
-            { name: 'Naranja',       value: [[255,127,0], [0,0,0]] },
-            { name: 'Oliva',         value: [[128,128,0], [0,0,0]] },
-            { name: 'Rojo',          value: [[255,0,0], [0,0,0]] },
-            { name: 'Verde',         value: [[0,255,0], [0,0,0]] },
-            { name: 'Violeta',       value: [[255,0,255], [0,0,0]] },
+            { name: 'Blanco',        value: [[60,60,60], [0,0,0]] },
+            { name: 'Amarillo',      value: [[80,40,0], [0,0,0]] },
+            { name: 'Azul',          value: [[0,0,80], [0,0,0]] },
+            { name: 'Cyan',          value: [[0,80,80], [0,0,0]] },
+            { name: 'Naranja',       value: [[128,40,0], [0,0,0]] },
+            { name: 'Oliva',         value: [[80,80,0], [0,0,0]] },
+            { name: 'Rojo',          value: [[80,0,0], [0,0,0]] },
+            { name: 'Verde',         value: [[0,80,0], [0,0,0]] },
+            { name: 'Violeta',       value: [[80,0,80], [0,0,0]] },
 
-            { name: 'Mexico',        value: [[200,200,200], [255,0,0], [0,255,0]] },
-            { name: 'Azul - Rojo',   value: [[0,0,255], [16,0,128], [32,0,64], [64,0,32], [128,0,16], [255,0,0]] },
-            { name: 'Rojo - Verde',  value: [[255,0,0], [128,16,0], [64,32,0], [32,64,0], [16,128,0], [0,255,0]] },
-            { name: 'Azul - Blanco', value: [[0,0,255], [16,16,255], [32,32,255], [64,64,255], [128,128,255], [255,255,255]] }
+            { name: 'Mexico',        value: [[80,80,80], [80,0,0], [0,80,0]] },
+            { name: 'Azul - Rojo',   value: [[0,0,80], [16,0,128], [32,0,64], [64,0,32], [128,0,16], [80,0,0]] },
+            { name: 'Rojo - Verde',  value: [[80,0,0], [128,16,0], [64,32,0], [32,64,0], [16,128,0], [0,80,0]] },
+            { name: 'Azul - Blanco', value: [[0,0,80], [8,8,128], [16,16,128], [32,32,128], [64,64,128], [80,80,80]] }
         ];
-        // Populate the color dropdown list with all the color options.
-        // The value of each option is its index into the colors list, and the name
-        // is the nice printable name from the color list.
+        
+        // Populate the color dropdown list with all the color and BoardURL options.
+        // The value of each option is its index into the colors/boardURL list, and the name
+        // is the nice printable name from the color/BoardURL list.
+        boardURLID.forEach(function(boardURLID, i){
+            $('#boardURLID').append($('<option></option>').attr('value', i).text(boardURLID.name));
+        });
         colors.forEach(function(color, i){
             $('#colors').append($('<option></option>').attr('value', i).text(color.name));
         });
@@ -220,10 +182,11 @@ input{
             // the board and save it as a config.json file.
         $('#update').click(function(){
             console.log('Update clicked Sensors!');
-            // Grab the board URL and password from the page forms
+            // Grab the board URL (and password) from the page forms
+            var boardURLx =  boardURLID[$('#boardURLID').val()].value;
             // var boardURL = $('#boardURL').val();
             // var password = $('#password').val();
-
+   
             // Build a configuration object from the selected colors, program to upload,
             // animations, period, and other options.
             var config = {
@@ -236,13 +199,14 @@ input{
                 mode_sensors: $('#sensor').prop('checked') ? 1 : 0 ,
                 s_animation: 0,
                 // s_animation: Number($('#s_animation').val()),
-                s_delay_step: Number($('#s_delay_step').val()),
+                s_delay_step: Number($('#s_delay_step').val())*1000-2000,
                 s_sensor_on: $('#sensor').prop('checked') ? 1 : 0
             };
             console.log(config)
             // Open an initialize web socker connection
-            // ws = new WebSocket(boardURL);
-            ws = new WebSocket('ws://192.168.1.101:8266');
+            // ws = new WebSocket('ws://192.168.1.101:8266'); <<< Runing
+            ws = new WebSocket(boardURLx);
+            
             ws.onopen = function() {
                 // Uncomment to see debug output of what was sent on the websocket
                 // connection.
@@ -301,7 +265,7 @@ input{
             $("divmirror").hide(); 
             console.log('Reseting...');
             var config = {
-                colors: [[165,165,165], [0,0,0]],
+                colors: [[80,80,80], [0,0,0]],
                 e_animation: $('#e_animation').val(),
                 e_period_ms: Number($('#e_period_ms').val()),
                 e_mirror_colors: $('#e_mirror_colors').prop('checked'),
@@ -309,7 +273,7 @@ input{
                 mode_sensors: 1,
                 s_animation: 0,
                 // s_animation: Number($('#s_animation').val()),
-                s_delay_step: 3000,
+                s_delay_step: 8000,
                 s_sensor_on: 0
             };
             console.log(config)
