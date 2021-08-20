@@ -28,7 +28,7 @@ Then, new config options will be displayed.
     
       - Speed (milliseconds)
       
-      - Mirroring colors
+      - Mirror colors
 
 ![efectos](https://user-images.githubusercontent.com/81655331/130261845-1ab0d5a7-99b7-46d9-95fe-bb26f4312e74.png)
 
